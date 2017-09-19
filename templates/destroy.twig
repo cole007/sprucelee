@@ -1,0 +1,31 @@
+{% extends "_layouts/cp" %}
+{% set tabs = {
+	home: { label: "Home"|t, url: url('sprucelee') },    
+    seek:    { label: "Seek"|t, url: url('sprucelee/seek') },
+    destroy:    { label: "Destroy"|t, url: url('sprucelee/destroy') }
+} %}
+
+{% set selectedTab = 'destroy' %}
+{% set title = 'Destroy | Spruce Lee'|t %}
+{% import "_includes/forms" as forms %}
+
+{% includeCssResource "sprucelee/css/SpruceLee_Style.css" %}
+{% includeJsResource "sprucelee/js/SpruceLee_Script.js" %}
+
+{% set content %}
+	{% set c = craft.spruceLee.getSaught({ status: 'identified' }) %}
+	{% if c|length == 0 %}
+	<p>No assets found.</p>
+	<p><a href="{{ url('sprucelee/seek') }}" class="btn submit">Find some</a></p>
+	{% else %}
+	<form method="POST" enctype="multipart/form-data">
+		{{ getCsrfInput() }}
+		{{ forms.hidden({
+		    name: 'action',
+		    value: "SpruceLee_Purge/purge"
+		}) }}
+		<p>{{ c|length }} assets awaiting removal.</p>
+		<input type="submit" name="submit" value="Destroy" class="btn submit" />
+	</form>
+	{% endif %}
+{% endset %}

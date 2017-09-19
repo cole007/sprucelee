@@ -1,0 +1,14 @@
+{
+	"name": "/sprucelee",
+	"description": "Scan and purge unused assets",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "@cole007",
+			"homepage": "http://ournameismud.co.uk/"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}

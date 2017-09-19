@@ -1,0 +1,41 @@
+{% extends "_layouts/cp" %}
+{% set tabs = {
+	home: { label: "Home"|t, url: url('sprucelee') },    
+    seek:    { label: "Seek"|t, url: url('sprucelee/seek') },
+    destroy:    { label: "Destroy"|t, url: url('sprucelee/destroy') }
+} %}
+
+{% set selectedTab = 'seek' %}
+{% set title = 'Seek | Spruce Lee'|t %}
+{% import "_includes/forms" as forms %}
+
+{% includeCssResource "sprucelee/css/SpruceLee_Style.css" %}
+{% includeJsResource "sprucelee/js/SpruceLee_Script.js" %}
+
+{% set content %}
+	<form method="POST" enctype="multipart/form-data">
+		{{ getCsrfInput() }}
+		{% set options = {} %}
+		{% set folders = craft.spruceLee.getFolders() %}
+		{{ forms.checkboxField({
+			name: 'src[]',
+			label: 'All',
+			value: null,
+			class: 'all'
+		}) }}
+		{% for key,folder in folders %}
+			{# {% set options = options|merge([{ value: folder.id, label: folder.name }]) %} #}
+			{{ forms.checkboxField({
+				name: 'src[]',
+				label: folder,
+				value: key
+			}) }}
+		{% endfor %}
+		
+		{{ forms.hidden({
+		    name: 'action',
+		    value: "SpruceLee_Scan/scan"
+		}) }}
+		<input type="submit" name="submit" value="Seek" class="btn submit" />
+	</form>
+{% endset %}
