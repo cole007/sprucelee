@@ -18,11 +18,9 @@ Spruce Lee works on Craft 2.4.x and Craft 2.5.x.
 
 ## Spruce Lee Overview
 
--Insert text here-
-
-## Configuring Spruce Lee
-
--Insert text here-
+Spruce Lee is a plugin for clearing out unused assets from a Craft build.
+It does this by looping through assets that do not have relationships and storing a record of these.
+It then `destroy`s identified records through the Craft Asset API.
 
 ## Using Spruce Lee
 
@@ -30,8 +28,10 @@ Spruce Lee works on Craft 2.4.x and Craft 2.5.x.
 
 ## Spruce Lee Roadmap
 
-Some things to do, and ideas for potential features:
+- clean out empty folders
+- clean out empty/unusued asset sources
 
 * Release it
 
 Brought to you by [@cole007](http://ournameismud.co.uk/)
+Project icon from [Hamish](https://thenounproject.com/search/?q=bruce%20lee&i=636958)
