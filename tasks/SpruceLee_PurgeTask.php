@@ -40,7 +40,7 @@ class SpruceLee_PurgeTask extends BaseTask
      */
     public function getDescription()
     {
-        return 'SpruceLee_Purge Tasks';
+        return 'SpruceLee: Purge Assets';
     }
 
     /**
