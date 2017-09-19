@@ -28,6 +28,7 @@ It then `destroy`s identified records through the Craft Asset API.
 
 ## Spruce Lee Roadmap
 
+- remove relevant records in the `craft_assetfiles` table?
 - clean out empty folders
 - clean out empty/unusued asset sources
 
